@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DrugstoreSpringMVC.iml" filepath="$PROJECT_DIR$/DrugstoreSpringMVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/drugstore-core.iml" filepath="$PROJECT_DIR$/core/drugstore-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/drugstore-web.iml" filepath="$PROJECT_DIR$/web/drugstore-web.iml" />
+    </modules>
+  </component>
+</project>
+
