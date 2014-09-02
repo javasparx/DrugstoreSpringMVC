@@ -2,13 +2,7 @@ package uz.javlon.dao.hibernate;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.util.Version;
 import org.hibernate.*;
-import org.hibernate.search.FullTextSession;
-import org.hibernate.search.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.orm.ObjectRetrievalFailureException;
@@ -45,7 +39,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     private Class<T> persistentClass;
     @Resource
     private SessionFactory sessionFactory;
-    private Analyzer defaultAnalyzer;
+//    private Analyzer defaultAnalyzer;
 
     /**
      * Constructor that takes in a class to see which type of entity to persist.
@@ -55,7 +49,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
      */
     public GenericDaoHibernate(final Class<T> persistentClass) {
         this.persistentClass = persistentClass;
-        defaultAnalyzer = new StandardAnalyzer(Version.LUCENE_35);
+//        defaultAnalyzer = new StandardAnalyzer(Version.LUCENE_36);
     }
 
     /**
@@ -67,7 +61,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     public GenericDaoHibernate(final Class<T> persistentClass, SessionFactory sessionFactory) {
         this.persistentClass = persistentClass;
         this.sessionFactory = sessionFactory;
-        defaultAnalyzer = new StandardAnalyzer(Version.LUCENE_35);
+//        defaultAnalyzer = new StandardAnalyzer(Version.LUCENE_36);
     }
 
     public SessionFactory getSessionFactory() {
@@ -110,18 +104,19 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
      * {@inheritDoc}
      */
     public List<T> search(String searchTerm) throws SearchException {
-        Session sess = getSession();
-        FullTextSession txtSession = Search.getFullTextSession(sess);
-
-        org.apache.lucene.search.Query qry;
-        try {
-            qry = HibernateSearchTools.generateQuery(searchTerm, this.persistentClass, sess, defaultAnalyzer);
-        } catch (ParseException ex) {
-            throw new SearchException(ex);
-        }
-        org.hibernate.search.FullTextQuery hibQuery = txtSession.createFullTextQuery(qry,
-                this.persistentClass);
-        return hibQuery.list();
+//        Session sess = getSession();
+//        FullTextSession txtSession = Search.getFullTextSession(sess);
+//
+//        org.apache.lucene.search.Query qry;
+//        try {
+//            qry = HibernateSearchTools.generateQuery(searchTerm, this.persistentClass, sess, defaultAnalyzer);
+//        } catch (ParseException ex) {
+//            throw new SearchException(ex);
+//        }
+//        org.hibernate.search.FullTextQuery hibQuery = txtSession.createFullTextQuery(qry,
+//                this.persistentClass);
+//        return hibQuery.list();
+        return new ArrayList<>();
     }
 
     /**
@@ -198,7 +193,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
      * {@inheritDoc}
      */
     public void reindex() {
-        HibernateSearchTools.reindex(persistentClass, getSessionFactory().getCurrentSession());
+//        HibernateSearchTools.reindex(persistentClass, getSessionFactory().getCurrentSession());
     }
 
 
@@ -206,6 +201,6 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
      * {@inheritDoc}
      */
     public void reindexAll(boolean async) {
-        HibernateSearchTools.reindexAll(async, getSessionFactory().getCurrentSession());
+//        HibernateSearchTools.reindexAll(async, getSessionFactory().getCurrentSession());
     }
 }

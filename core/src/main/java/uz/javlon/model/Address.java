@@ -2,9 +2,6 @@ package uz.javlon.model;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -17,7 +14,7 @@ import java.io.Serializable;
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 @Embeddable
-@Indexed
+//@Indexed
 public class Address extends BaseObject implements Serializable {
     private static final long serialVersionUID = 3617859655330969141L;
     private String address;
@@ -27,31 +24,31 @@ public class Address extends BaseObject implements Serializable {
     private String postalCode;
 
     @Column(length = 150)
-    @Field
+//    @Field
     public String getAddress() {
         return address;
     }
 
     @Column(length = 50)
-    @Field
+//    @Field
     public String getCity() {
         return city;
     }
 
     @Column(length = 100)
-    @Field
+//    @Field
     public String getProvince() {
         return province;
     }
 
     @Column(length = 100)
-    @Field
+//    @Field
     public String getCountry() {
         return country;
     }
 
     @Column(name = "postal_code", length = 15)
-    @Field(analyze = Analyze.NO)
+//    @Field(analyze = Analyze.NO)
     public String getPostalCode() {
         return postalCode;
     }

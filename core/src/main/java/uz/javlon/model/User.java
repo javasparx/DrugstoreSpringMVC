@@ -5,7 +5,6 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.search.annotations.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,7 +25,7 @@ import java.util.*;
  */
 @Entity
 @Table(name = "app_user")
-@Indexed
+//@Indexed
 @XmlRootElement
 public class User extends BaseObject implements Serializable, UserDetails {
     private static final long serialVersionUID = 3832626162173359411L;
@@ -66,13 +65,13 @@ public class User extends BaseObject implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @DocumentId
+//    @DocumentId
     public Long getId() {
         return id;
     }
 
     @Column(nullable = false, length = 50, unique = true)
-    @Field
+//    @Field
     public String getUsername() {
         return username;
     }
@@ -98,30 +97,30 @@ public class User extends BaseObject implements Serializable, UserDetails {
     }
 
     @Column(name = "first_name", nullable = false, length = 50)
-    @Field
+//    @Field
     public String getFirstName() {
         return firstName;
     }
 
     @Column(name = "last_name", nullable = false, length = 50)
-    @Field
+//    @Field
     public String getLastName() {
         return lastName;
     }
 
     @Column(nullable = false, unique = true)
-    @Field
+//    @Field
     public String getEmail() {
         return email;
     }
 
     @Column(name = "phone_number")
-    @Field(analyze = Analyze.NO)
+//    @Field(analyze = Analyze.NO)
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    @Field
+    //    @Field
     public String getWebsite() {
         return website;
     }
@@ -137,7 +136,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
     }
 
     @Embedded
-    @IndexedEmbedded
+//    @IndexedEmbedded
     public Address getAddress() {
         return address;
     }

@@ -5,8 +5,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.search.FullTextSession;
-import org.hibernate.search.Search;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -92,7 +90,7 @@ public abstract class BaseDaoTestCase extends AbstractTransactionalJUnit4SpringC
      */
     public void flushSearchIndexes() {
         Session currentSession = sessionFactory.getCurrentSession();
-        final FullTextSession fullTextSession = Search.getFullTextSession(currentSession);
-        fullTextSession.flushToIndexes();
+//        final FullTextSession fullTextSession = Search.getFullTextSession(currentSession);
+//        fullTextSession.flushToIndexes();
     }
 }

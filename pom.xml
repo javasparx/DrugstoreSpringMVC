@@ -237,6 +237,47 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-solr</artifactId>
+            <version>${spring-data-solr.verion}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>solr-solrj</artifactId>
+                    <groupId>org.apache.solr</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>4.9.0</version>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>org.codehaus.jackson</groupId>-->
+        <!--<artifactId>jackson-mapper-asl</artifactId>-->
+        <!--<version>${jackson.version}</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson}</version>
+        </dependency>
 
     </dependencies>
 
@@ -292,6 +333,13 @@
     </reporting>
 
     <profiles>
+        <profile>
+            <id>Skip test</id>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </profile>
+
         <!-- ================= Database Profiles ================= -->
         <profile>
             <id>derby</id>
@@ -409,7 +457,7 @@
 
         <!-- Framework dependency versions -->
         <appfuse.version>3.0.0</appfuse.version>
-        <bootstrap.version>3.0.2</bootstrap.version>
+        <bootstrap.version>3.2.0</bootstrap.version>
         <commons.fileupload.version>1.3</commons.fileupload.version>
         <commons.io.version>2.4</commons.io.version>
         <displaytag.version>1.2</displaytag.version>
@@ -462,7 +510,7 @@
         <dwr.version>2.0.10</dwr.version>
         <ehcache.version>2.6.6</ehcache.version>
         <ehcache.web.version>2.0.4</ehcache.web.version>
-        <hibernate.search.version>4.1.1.Final</hibernate.search.version>
+        <hibernate.search.version>4.5.1.Final</hibernate.search.version>
         <hibernate.version>4.2.7.Final</hibernate.version>
         <javamail.version>1.4.1</javamail.version>
         <jpa.version>2.0-cr-1</jpa.version>
@@ -479,6 +527,8 @@
         <spring-data-solr.verion>1.1.0.RELEASE</spring-data-solr.verion>
 
         <jdbc.validationQuery>SELECT 1 + 1</jdbc.validationQuery>
+        <skipTests>false</skipTests>
+        <jackson>2.2.2</jackson>
     </properties>
 
 

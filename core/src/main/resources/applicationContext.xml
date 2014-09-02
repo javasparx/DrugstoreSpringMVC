@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:solr="http://www.springframework.org/schema/data/solr"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/solr http://www.springframework.org/schema/data/solr/spring-solr.xsd"
        default-lazy-init="true">
 
     <!-- Activates scanning of @Autowired -->
@@ -10,6 +11,10 @@
 
     <!-- Activates scanning of @Repository and @Service -->
     <context:component-scan base-package="uz.javlon"/>
+
+    <solr:repositories base-package="uz.javlon.solr.repository" multicore-support="true"/>
+
+    <solr:solr-server id="solrServer" url="http://localhost:8983/solr"/>
 
     <!-- Add new DAOs here -->
 
