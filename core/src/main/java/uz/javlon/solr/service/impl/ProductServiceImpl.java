@@ -52,6 +52,15 @@ class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Page<Product> findByNames(String[] searchTerms, Pageable pageable) {
+        if (searchTerms == null || searchTerms.length == 0) {
+            return productRepository.findAll(pageable);
+        }
+
+        return productRepository.findByNameIn(splitSearchTermAndRemoveIgnoredCharacters(searchTerms), pageable);
+    }
+
+    @Override
     public Product findById(String id) {
         return productRepository.findOne(id);
     }
@@ -66,6 +75,17 @@ class ProductServiceImpl implements ProductService {
 
     private Collection<String> splitSearchTermAndRemoveIgnoredCharacters(String searchTerm) {
         String[] searchTerms = StringUtils.split(searchTerm, " ");
+        List<String> result = new ArrayList<String>(searchTerms.length);
+        for (String term : searchTerms) {
+            if (StringUtils.isNotEmpty(term)) {
+                result.add(IGNORED_CHARS_PATTERN.matcher(term).replaceAll(" "));
+            }
+        }
+        return result;
+    }
+
+    private Collection<String> splitSearchTermAndRemoveIgnoredCharacters(String[] searchTerms) {
+//        String[] searchTerms = StringUtils.split(searchTerm, " ");
         List<String> result = new ArrayList<String>(searchTerms.length);
         for (String term : searchTerms) {
             if (StringUtils.isNotEmpty(term)) {

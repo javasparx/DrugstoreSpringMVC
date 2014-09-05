@@ -170,6 +170,7 @@
     <orderEntry type="library" name="Maven: org.webjars:bootswatch:3.2.0-1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap-datepicker:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:jquery-ui:1.11.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:typeahead.js:0.9.3" level="project" />
     <orderEntry type="library" name="Maven: ro.isdc.wro4j:wro4j-core:1.7.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: struts-menu:struts-menu:2.4.3" level="project" />

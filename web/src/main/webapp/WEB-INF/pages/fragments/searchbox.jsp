@@ -35,20 +35,22 @@
         </form:form>
     </div>
 </div>
-<%--<div class="col-lg-12">--%>
-<%--<input type="text" style="margin: 0 auto;" data-provide="typeahead" data-items="4">--%>
+<div class="col-lg-12">
+    <label for="sss">Seea</label>
+    <input type="text" style="margin: 0 auto;" data-provide="typeahead" data-items="4" id="sss">
 
-<%--<script type="text/javascript">--%>
-<%--$(function () {--%>
+    <script type="text/javascript">
+        $(function () {
 
-<%--$('.typeahead').typeahead({--%>
-<%--source: function (query, process) {--%>
-<%--return $.get('<c:url value="/app/autocomplete"/>', { query: query }, function (data) {--%>
-<%--return process(data.options);--%>
-<%--});--%>
-<%--}--%>
-<%--});--%>
+            $('.typeahead').typeahead({
+                source: function (query, process) {
+                    return $.get('<c:url value="/app/autocomplete"/>', { query: query }, function (data) {
+                        alert("wwwwwwwwwwww");
+                        return process(data.options);
+                    });
+                }
+            });
 
-<%--});--%>
-<%--</script>--%>
-<%--</div>--%>
+        });
+    </script>
+</div>

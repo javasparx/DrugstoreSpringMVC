@@ -48,11 +48,15 @@ public class SearchController {
 
     private ProductService productService;
 
+    /*Fix for multiple items, when pressed next button*/
     @RequestMapping("/search")
-    public String search(Model model, @RequestParam(value = "q", required = false) String query, @PageableDefault(
-            page = 0, size = ProductService.DEFAULT_PAGE_SIZE) Pageable pageable, HttpServletRequest request) {
+    public String search(
+            Model model,
+            @RequestParam(value = "q[]", required = false) String[] query,
+            @PageableDefault(page = 0, size = ProductService.DEFAULT_PAGE_SIZE) Pageable pageable,
+            HttpServletRequest request) {
 
-        model.addAttribute("page", productService.findByName(query, pageable));
+        model.addAttribute("page", productService.findByNames(query, pageable));
         model.addAttribute("pageable", pageable);
         model.addAttribute("query", query);
         return "search";
@@ -60,7 +64,7 @@ public class SearchController {
 
     @ResponseBody
     @RequestMapping(value = "/autocomplete", produces = "application/json", method = RequestMethod.GET, headers = "Accept=application/json")
-    public Set<String> autoComplete(Model model, @RequestParam("term") String query,
+    public Set<String> autoComplete(Model model, @RequestParam("query") String query,
                                     @PageableDefault(page = 0, size = 1) Pageable pageable) {
         if (!StringUtils.hasText(query)) {
             return Collections.emptySet();

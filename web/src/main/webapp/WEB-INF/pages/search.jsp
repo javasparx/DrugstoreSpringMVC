@@ -1,16 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
-<html lang="us">
+<%@ include file="/common/taglibs.jsp" %>
+
 <head>
-    <jsp:include page="fragments/meta.jsp"></jsp:include>
+    <title><fmt:message key="home.title"/></title>
+    <meta name="menu" content="Home"/>
+    <script type="text/javascript">
+        $(function () {
+
+            <%--$('#queryField').typeahead({--%>
+            <%--remote: '<c:url value="/app/autocomplete"/>?term=%QUERY',--%>
+            <%--hint: false/*,--%>
+            <%--selected: function (event, ui) {--%>
+            <%--alert("asasasa");--%>
+            <%--$("#queryField").value = ui.item.value;--%>
+            <%--$('#searchform').submit();--%>
+            <%--}*/--%>
+            <%--});--%>
+
+            var ms = $('#magicsuggest').magicSuggest({
+                placeholder: 'Make a selection',
+                method: 'get',
+                name: 'q',
+                data: '<c:url value="/app/autocomplete"/>',
+                hideTrigger: true,
+                maxSuggestions: 4,
+                useZebraStyle: true
+            });
+
+
+        });
+    </script>
 </head>
+
 <body>
-<jsp:include page="fragments/searchbox.jsp"></jsp:include>
+
+<div class="col-lg-12">
+    <%--<div class="well bs-component">--%>
+
+    <form:form id="searchform" name="searchform" action="/search" method="GET" cssClass="form-horizontal">
+
+        <div class="input-group">
+                <%--<div id="magicsuggest" class="form-control input-lg"></div>--%>
+                <%--value="${query}"--%>
+            <input id="magicsuggest" class="form-control" type="text">
+
+        <span class="input-group-btn">
+                    <input class="btn btn-success input-lg" type="submit" value="Search">
+        </span>
+
+        </div>
+
+    </form:form>
+    <%--</div>--%>
+</div>
+
 <hr/>
 <c:choose>
     <c:when test="${fn:length(page.content) == 0}">

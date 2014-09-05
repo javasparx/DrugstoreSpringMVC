@@ -29,6 +29,8 @@ public interface ProductService {
 
     Page<Product> findByName(String searchTerm, Pageable pageable);
 
+    Page<Product> findByNames(String[] searchTerms, Pageable pageable);
+
     Product findById(String id);
 
     FacetPage<Product> autocompleteNameFragment(String fragment, Pageable pageable);

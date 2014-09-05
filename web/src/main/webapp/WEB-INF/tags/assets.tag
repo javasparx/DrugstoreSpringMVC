@@ -11,13 +11,16 @@
 
     <c:when test="${sessionScope.debugAssets}">
         <link rel="stylesheet" type="text/css" href="${base}/webjars/bootswatch/3.2.0/yeti/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="${base}/webjars/jquery-ui/1.11.1/jquery-ui.min.css"/>
         <link rel="stylesheet" type="text/css" href="${base}/styles/style.css"/>
+        <link rel="stylesheet" type="text/css" href="${base}/styles/magicsuggest-min.css"/>
 
         <script type="text/javascript" src="${base}/webjars/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="${base}/webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="${base}/webjars/jquery-cookie/1.3.1/jquery.cookie.js"></script>
-        <script type="text/javascript" src="${base}/webjars/typeahead.js/0.9.3/typeahead.min.js"></script>
+        <script type="text/javascript" src="${base}/webjars/typeahead.js/0.9.3/typeahead.js"></script>
         <script type="text/javascript" src="${base}/scripts/script.js"></script>
+        <script type="text/javascript" src="${base}/scripts/magicsuggest-min.js"></script>
     </c:when>
     <c:otherwise>
         <link rel="stylesheet" type="text/css" href="${base}/assets/v/${applicationScope.assetsVersion}/${group}.css"/>

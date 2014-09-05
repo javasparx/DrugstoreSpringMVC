@@ -15,7 +15,7 @@
                                                                                                   writeEntireProperty="true"/>>
 <c:set var="currentMenu" scope="request"><decorator:getProperty property="meta.menu"/></c:set>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
             <span class="icon-bar"></span>

@@ -1,0 +1,1 @@
+java -jar e:\tools\solr-4.9.0\example\start.jar
