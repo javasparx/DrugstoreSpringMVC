@@ -8,7 +8,12 @@
                     <a href="<c:url value="/login"/>"><fmt:message key="login.title"/></a>
                 </li>
             </c:if>
+                <%--TODO - make it welcome page and dynamic--%>
+            <li>
+                <a href="<c:url value="/app/search"/>"><fmt:message key="search.title"/></a>
+            </li>
             <menu:displayMenu name="Home"/>
+                <%--<menu:displayMenu name="Search"/>--%>
             <menu:displayMenu name="UserMenu"/>
             <menu:displayMenu name="AdminMenu"/>
             <menu:displayMenu name="Logout"/>

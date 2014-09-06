@@ -1,7 +1,7 @@
 <%@ include file="/common/taglibs.jsp" %>
 
 <head>
-    <title><fmt:message key="home.title"/></title>
+    <title><fmt:message key="search.title"/></title>
     <meta name="menu" content="Home"/>
     <script type="text/javascript">
         $(function () {
@@ -16,15 +16,27 @@
             <%--}*/--%>
             <%--});--%>
 
+            jQuery.ajaxSettings.traditional = true;
+
             var ms = $('#magicsuggest').magicSuggest({
                 placeholder: 'Make a selection',
-                method: 'get',
+                method: 'GET',
                 name: 'q',
                 data: '<c:url value="/app/autocomplete"/>',
                 hideTrigger: true,
                 maxSuggestions: 4,
-                useZebraStyle: true
+                allowFreeEntries: false,
+                useZebraStyle: true,
+                ajaxConfig: {
+                    traditional: true
+                }
             });
+
+//            $(ms).on('load', function () {
+//                ms.setSelection([
+//                    {name: 'Paris', value: 1}
+//                ]);
+//            });
 
 
         });
@@ -36,7 +48,7 @@
 <div class="col-lg-12">
     <%--<div class="well bs-component">--%>
 
-    <form:form id="searchform" name="searchform" action="/search" method="GET" cssClass="form-horizontal">
+        <form:form id="searchform" name="searchform" action="/search" method="POST" cssClass="form-horizontal">
 
         <div class="input-group">
                 <%--<div id="magicsuggest" class="form-control input-lg"></div>--%>
@@ -44,7 +56,7 @@
             <input id="magicsuggest" class="form-control" type="text">
 
         <span class="input-group-btn">
-                    <input class="btn btn-success input-lg" type="submit" value="Search">
+                    <input class="btn btn-success" type="submit" value="Search">
         </span>
 
         </div>

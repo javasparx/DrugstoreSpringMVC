@@ -250,6 +250,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
+            <version>${spring-hateoas.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
             <version>4.9.0</version>
@@ -524,7 +530,8 @@
         <velocity.version>1.7</velocity.version>
         <wro4j.version>1.7.2</wro4j.version>
 
-        <spring-data-solr.verion>1.1.0.RELEASE</spring-data-solr.verion>
+        <spring-data-solr.verion>1.2.4.RELEASE</spring-data-solr.verion>
+        <spring-hateoas.version>0.16.0.RELEASE</spring-hateoas.version>
 
         <jdbc.validationQuery>SELECT 1 + 1</jdbc.validationQuery>
         <skipTests>false</skipTests>

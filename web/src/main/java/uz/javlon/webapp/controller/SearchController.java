@@ -33,7 +33,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import uz.javlon.solr.model.Product;
 import uz.javlon.solr.service.ProductService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -49,16 +48,20 @@ public class SearchController {
     private ProductService productService;
 
     /*Fix for multiple items, when pressed next button*/
-    @RequestMapping("/search")
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(
             Model model,
             @RequestParam(value = "q[]", required = false) String[] query,
-            @PageableDefault(page = 0, size = ProductService.DEFAULT_PAGE_SIZE) Pageable pageable,
-            HttpServletRequest request) {
+            @PageableDefault(page = 0, size = ProductService.DEFAULT_PAGE_SIZE) Pageable pageable) {
 
         model.addAttribute("page", productService.findByNames(query, pageable));
         model.addAttribute("pageable", pageable);
         model.addAttribute("query", query);
+        return "search";
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search() {
         return "search";
     }
 
